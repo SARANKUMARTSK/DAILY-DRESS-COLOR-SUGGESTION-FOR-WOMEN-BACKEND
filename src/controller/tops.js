@@ -24,7 +24,7 @@ const getAllTops = async (req, res) => {
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-      cb(null, '../../DAILY_DRESS_COLOR_SUGGESTION_FOR_WOMEN_CAPSTONE/FRONTEND/src/images');
+      cb(null, '../../DAILY_DRESS_COLOR_SUGGESTION_FOR_WOMEN_CAPSTONE/DAILY-DRESS-COLOR-SUGGESTION-FOR-WOMEN-FRONTEND/src/images');
     },
     filename: function(req, file, cb) {
       cb(null, `${Date.now()}_${file.originalname}`);
@@ -45,7 +45,6 @@ const storage = multer.diskStorage({
           } else if (err) {
             return res.status(500).send({ message: 'Unknown error occurred' });
           }
-          
           await TopsModel.create({
             dressName: req.body.dressName,
             dressType: req.body.dressType,
@@ -56,6 +55,8 @@ const storage = multer.diskStorage({
             imageFile: req.file.filename 
           });
           
+
+          
           res.status(200).send({
             message: "New Top Added Successfully",
             top: req.body
@@ -64,6 +65,7 @@ const storage = multer.diskStorage({
       } else {
         res.status(404).send({
           message: `Top with dressName '${req.body.dressName}' already exists. Please Try a Different Name`
+         
         });
       }
     } catch (error) {

@@ -21,7 +21,7 @@ const getAllPhants = async(req,res)=>{
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-      cb(null, '../../DAILY_DRESS_COLOR_SUGGESTION_FOR_WOMEN_CAPSTONE/FRONTEND/src/images');
+      cb(null, '../../DAILY_DRESS_COLOR_SUGGESTION_FOR_WOMEN_CAPSTONE/DAILY-DRESS-COLOR-SUGGESTION-FOR-WOMEN-FRONTEND/src/images');
     },
     filename: function(req, file, cb) {
       cb(null, `${Date.now()}_${file.originalname}`);
