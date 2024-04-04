@@ -23,7 +23,7 @@ const getAllTshirt = async(req,res)=>{
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-      cb(null, '../../DAILY_DRESS_COLOR_SUGGESTION_FOR_WOMEN_CAPSTONE/DAILY-DRESS-COLOR-SUGGESTION-FOR-WOMEN-FRONTEND/src/images');
+      cb(null, './src/images');
     },
     filename: function(req, file, cb) {
       cb(null, `${Date.now()}_${file.originalname}`);
@@ -49,7 +49,7 @@ const storage = multer.diskStorage({
             dressName: req.body.dressName,
             dressType: req.body.dressType,
             color: req.body.color,
-            season: req.body.season, // Ensure this field is properly set
+            season: req.body.season, 
             description: req.body.description,
             lastWornDate: req.body.lastWornDate,
             imageFile: req.file.filename 
