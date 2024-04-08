@@ -1,13 +1,14 @@
 import Auth from '../utils/auth.js'
 
-const UserGaurd = async(req,res,next)=>{
+const AdminGaurd = async(req,res,next)=>{
  
     try {
         let token = req?.headers?.authorization?.split(" ")[1]
+      
         if(token)
         {
             let payload = await Auth.decodeToken(token)
-            if(payload.role === 'admin' || payload.role ==='user')
+            if(payload.role === 'admin')
                 next()
             else    
                 res.status(402).send({message:"Permission Denied"})
@@ -26,4 +27,4 @@ const UserGaurd = async(req,res,next)=>{
     }
 }
 
-export default UserGaurd
+export default AdminGaurd
